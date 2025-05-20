@@ -1,0 +1,84 @@
+/*
+*************
+    RESET
+*************
+*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+input,
+label {
+    line-height: 1.1;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/*
+*****************
+    VARIABLES
+*****************
+*/
+:root {
+    --accent: rgb(0, 175, 85);
+    --accent-light: rgb(0, 175, 85, 0.17);
+
+    --text: rgb(56, 56, 56);
+    --text-light: rgb(121, 121, 121);
+
+    --lines: rgb(222, 222, 222);
+
+    --bg-sidebar: rgb(255, 255, 255);
+    --bg-main: rgb(255, 255, 255);
+}
+
+/*
+******************
+    TYPOGRAPHY
+******************
+*/
+body {
+    font-family:
+        system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol";
+    color: var(--text);
+}
+
+/*
+**********************
+    PROJECT STYLES
+**********************
+*/
+
+#root {
+    min-height: 100vh;
+}
+
+button {
+    font-size: 1rem;
+    line-height: 1.5;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-family: inherit;
+
+    display: block;
+}

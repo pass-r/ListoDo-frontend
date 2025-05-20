@@ -1,0 +1,42 @@
+.newTask {
+    font-weight: 700;
+    font-size: 0.8rem;
+
+    margin-bottom: 1em;
+}
+
+.link,
+.project {
+    padding: 5px 0 5px 10px;
+    margin-right: 10px;
+}
+
+.link {
+    border-radius: 3px;
+    text-align: left;
+
+    width: 95%;
+
+    border-left: 3px solid white;
+
+    &:visited {
+        color: var(--text);
+    }
+
+    &:focus,
+    &:hover,
+    &:active {
+        color: var(--accent);
+    }
+}
+
+.active {
+    background-color: var(--accent-light);
+    border-left: 3px solid var(--accent);
+}
+
+.project {
+    font-weight: 700;
+
+    margin-top: 1.5em;
+}

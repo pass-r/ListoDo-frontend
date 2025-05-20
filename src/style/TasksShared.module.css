@@ -1,0 +1,13 @@
+.title {
+    margin-bottom: 1em;
+}
+
+.subtitle {
+    font-size: 1rem;
+
+    margin-bottom: 1em;
+}
+
+.subtitle:last-of-type {
+    margin-top: 2em;
+}

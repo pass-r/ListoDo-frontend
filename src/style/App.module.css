@@ -1,0 +1,20 @@
+.gridLayout {
+    display: grid;
+    grid-template-columns: minmax(200px, 0.8fr) 4fr;
+    min-height: 100vh;
+}
+
+.sidebarContainer {
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--lines);
+
+    width: 90%;
+    margin: 1em auto;
+}
+
+.mainContainer {
+    background-color: var(--bg-main);
+
+    width: 65%;
+    margin: 1em auto;
+}
