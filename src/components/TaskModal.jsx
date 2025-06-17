@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useContext } from "react";
 import styles from "../style/TaskModal.module.css";
 import { DataContext } from "../App.jsx";
 
-export default function TaskModal({ status, toggleStatus, addNewTask }) {
+export default function TaskModal({ status, toggleStatus, setNewTask }) {
   const refDialog = useRef(null);
   const data = useContext(DataContext);
 
@@ -56,7 +56,7 @@ export default function TaskModal({ status, toggleStatus, addNewTask }) {
       addedDate,
     };
 
-    addNewTask(newTask);
+    setNewTask(newTask);
   }
 
   return (

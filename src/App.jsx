@@ -77,7 +77,7 @@ export default function App() {
           <TaskModal
             status={statusModal}
             toggleStatus={() => setStatusModal((prevStatus) => !prevStatus)}
-            addNewTask={setNewTask}
+            setNewTask={setNewTask}
           />
         )}
       </div>
