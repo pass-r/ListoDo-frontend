@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect } from "react";
 import styles from "./style/App.module.css";
 import "./style/global.css";
 import Sidebar from "./components/Sidebar.jsx";
@@ -6,8 +6,7 @@ import { Tasks } from "./components/TasksViews/index.js";
 import TaskModal from "./components/TaskModal.jsx";
 import { getTasks, addTask } from "./api.js";
 import { convertDatesInArray } from "./utils/convertArray.js";
-
-const DataContext = createContext();
+import { DataContext } from "./components/Context/context.js";
 
 export default function App() {
   const [view, setView] = useState("today");
