@@ -6,7 +6,7 @@ import {
   filterHasDueDate,
 } from "../../utils/filterTasks.js";
 import styles from "../../style/TasksShared.module.css";
-import { DataContext } from "../../App.jsx";
+import { DataContext } from "../Context/context.js";
 
 export default function TasksSomeday() {
   const data = useContext(DataContext);

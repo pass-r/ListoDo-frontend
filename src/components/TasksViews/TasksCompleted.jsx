@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Task from "../Task.jsx";
 import { filterIsDone } from "../../utils/filterTasks.js";
 import styles from "../../style/TasksShared.module.css";
-import { DataContext } from "../../App.jsx";
+import { DataContext } from "../Context/context.js";
 
 export default function TasksCompleted() {
   const data = useContext(DataContext);

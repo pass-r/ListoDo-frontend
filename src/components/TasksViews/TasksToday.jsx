@@ -3,7 +3,7 @@ import Task from "../Task.jsx";
 import { filterByDueDate, filterIsDone } from "../../utils/filterTasks.js";
 import { getDateTodayAsString } from "../../utils/getDate.js";
 import styles from "../../style/TasksShared.module.css";
-import { DataContext } from "../../App.jsx";
+import { DataContext } from "../Context/context.js";
 
 export default function TasksToday() {
   const data = useContext(DataContext);
