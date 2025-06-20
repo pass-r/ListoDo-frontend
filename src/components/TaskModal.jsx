@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import styles from "../style/TaskModal.module.css";
-import { DataContext } from "../App.jsx";
+import { DataContext } from "./Context/context.js";
 
 export default function TaskModal({ status, toggleStatus, setNewTask }) {
   const refDialog = useRef(null);
@@ -46,14 +46,12 @@ export default function TaskModal({ status, toggleStatus, setNewTask }) {
     const description = formData.get("description");
     const project = formData.get("project");
     const dueDate = formData.get("dueDate");
-    const addedDate = new Date();
 
     const newTask = {
       name,
       description: description !== "" ? description : null,
       project: project !== "" ? project : null,
       dueDate: dueDate !== "" ? dueDate : null,
-      addedDate,
     };
 
     setNewTask(newTask);
