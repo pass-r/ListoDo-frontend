@@ -7,7 +7,7 @@ import { apiRequest } from "./helpers/apiRequest";
  *  An object indicating whether the request was successful, the HTTP status code,
  *  and the server response or error.
  */
-export async function getTasks() {
+export async function apiGetTasks() {
   const url = "http://localhost:3000/api/tasks";
 
   return apiRequest(url);
@@ -21,7 +21,7 @@ export async function getTasks() {
  *  An object indicating whether the request was successful, the HTTP status code,
  *  and the server response or error.
  */
-export async function addTask(newTask) {
+export async function apiAddTask(newTask) {
   const url = "http://localhost:3000/api/tasks";
   const options = {
     method: "POST",
@@ -42,7 +42,7 @@ export async function addTask(newTask) {
  *  An object indicating whether the request was successful, the HTTP status code,
  *  and the server response or error.
  */
-export async function changeTask(id, itemsToBeUpdated) {
+export async function apiChangeTask(id, itemsToBeUpdated) {
   const url = `http://localhost:3000/api/tasks/${id}`;
   const options = {
     method: "PATCH",
@@ -61,7 +61,7 @@ export async function changeTask(id, itemsToBeUpdated) {
  *  An object indicating whether the request was successful, the HTTP status code,
  *  and the server response or error.
  */
-export async function deleteTask(id) {
+export async function apiDeleteTask(id) {
   const url = `http://localhost:3000/api/tasks/${id}`;
   const options = {
     method: "DELETE",
