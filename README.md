@@ -1,17 +1,25 @@
 # Task app - Frontend built with React
 
+This is the frontend for a Todo App built using React, which interacts with an API I developed in a separate project (see repository 'tasks-server').
 
-The frontend for a todo app built with **React** to practice React and also the interaction with an API that I built (see repository 'tasks-server').
+
+## Features
 
 
-## Tools used:
+- View, create, edit and delete Tasks.
+- Optimistic UI updated using React hooks.
+- Task data is fetched from the backend API.
+
+
+## Tools & Technologies:
 
 
 - React
 - JavaScript
+- API Integration: Communicates with a backend API to manage the tasks
 
 
-## TODO:
-- Add the ability to change and delete a task
-- Hide the sidebar on small screens and show a menu when the menu icon is clicked.
-- Projects: add them to the sidebar (menu) and create a project component.
+## Backend
+
+
+The backend API that powers this app is located in the task-server repository.
