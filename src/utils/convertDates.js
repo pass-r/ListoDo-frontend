@@ -9,7 +9,7 @@
  * @returns {Object[]} A new array of task objects with date strings converted to 'Date' obejcts
  * of 'null' if no valid date was provided.
  */
-function convertDates(taskArray) {
+export function convertDates(taskArray) {
   return taskArray.map((taskObject) => ({
     ...taskObject,
     addedDate: taskObject.addedDate ? new Date(taskObject.addedDate) : null,
@@ -17,5 +17,3 @@ function convertDates(taskArray) {
     doneDate: taskObject.doneDate ? new Date(taskObject.doneDate) : null,
   }));
 }
-
-export { convertDates };
