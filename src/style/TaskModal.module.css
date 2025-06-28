@@ -13,13 +13,19 @@
     max-width: 400px;
     padding: 2em 1.5em;
 }
+
+.dialog::backdrop {
+    backround: rgb(0, 0, 0, 1);
+    backdrop-filter: blur(0.2px) grayscale(1);
+}
+
 .title {
     margin-bottom: 0.8em;
 }
 
 .label,
 .inputText,
-.inputSelect,
+.inputDatalist,
 .inputDate {
     display: block;
     width: 100%;
@@ -36,7 +42,7 @@
 }
 
 .inputText,
-.inputSelect,
+.inputDatalist,
 .inputDate {
     border-radius: 3px;
     padding: 10px 5px;
@@ -48,7 +54,7 @@
 }
 
 .inputText:focus,
-.inputSelect:focus,
+.inputDatalist:focus,
 .inputDate:focus {
     border-left: 3px solid var(--accent);
     background-color: var(--accent-light);
