@@ -13,3 +13,29 @@
     max-width: 400px;
     padding: 2em 1.5em;
 }
+
+.dialog::backdrop {
+    backround: rgb(0, 0, 0, 1);
+    backdrop-filter: blur(0.3px) grayscale(1);
+}
+
+.text {
+    font-size: 1rem;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.buttonBox {
+    display: flex;
+    justify-content: center;
+}
+
+.buttonCancel,
+.buttonAccept {
+    display: inline-block;
+    width: 100%;
+}
+
+.buttonAccept {
+    color: var(--accent);
+}
