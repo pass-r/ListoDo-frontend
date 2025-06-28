@@ -1,86 +1,79 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useConfirmDelete } from "./hooks/useConfirmDelete.js";
+import TaskProvider from "./components/tasks/TasksProvider.jsx";
+import Sidebar from "./components/layout/Sidebar.jsx";
+import {
+  Today,
+  Future,
+  Someday,
+  Completed,
+  Project,
+} from "./components/tasks/taskviews/index.js";
+import TaskModal from "./components/tasks/TaskModal.jsx";
+import ConfirmDialog from "./components/notifications/ConfirmDialog.jsx";
 import styles from "./style/App.module.css";
 import "./style/global.css";
-import Sidebar from "./components/Sidebar.jsx";
-import { Tasks } from "./components/TasksViews/index.js";
-import TaskModal from "./components/TaskModal.jsx";
-import { getTasks, addTask } from "./api.js";
-import { convertDatesInArray } from "./utils/convertArray.js";
-import { DataContext } from "./components/Context/context.js";
 
 export default function App() {
-  const [view, setView] = useState("today");
+  const [currentView, setCurrentView] = useState({ active: "today", isProject: false });
+  const [modalState, setModalState] = useState({ isOpen: false, changeId: null });
 
-  const [data, setData] = useState([]);
-  const [newTask, setNewTask] = useState({});
-  const [update, setUpdate] = useState(true);
-  const [statusModal, setStatusModal] = useState(false);
+  const { isConfirmOpen, openConfirm, confirmDelete, cancelDelete } = useConfirmDelete();
 
-  const [firstRender, setFirstRender] = useState(true);
+  const openEditModal = (id) => setModalState({ isOpen: true, changeId: id });
 
-  useEffect(() => {
-    // update on first render and when a new task is added
-    async function fetchData() {
-      if (update) {
-        const tasksFromApi = await getTasks();
-        const tasksConverted = convertDatesInArray(tasksFromApi);
-        setData(tasksConverted);
-        setUpdate(false);
-      }
-    }
-    fetchData();
-  }, [update]);
-  // console.log("App() data: ", data);
-
-  /*
- TODO
- return from addTask in api.js
- return in the addNewTask function
-  */
-  useEffect(() => {
-    if (firstRender) {
-      setFirstRender(false);
+  const currentViewComponent = () => {
+    if (!currentView.isProject) {
+      const viewMap = {
+        today: <Today openEditModal={openEditModal} openConfirm={openConfirm} />,
+        future: <Future openEditModal={openEditModal} openConfirm={openConfirm} />,
+        someday: <Someday openEditModal={openEditModal} openConfirm={openConfirm} />,
+        completed: <Completed openEditModal={openEditModal} openConfirm={openConfirm} />,
+      };
+      return viewMap[currentView.active];
     } else {
-      async function addNewTask() {
-        const response = await addTask(newTask);
-        // TODO: handle error
-        setUpdate(true);
-      }
-      addNewTask();
+      const projectView = (
+        <Project
+          openEditModal={openEditModal}
+          openConfirm={openConfirm}
+          projectName={currentView.active}
+        />
+      );
+      return projectView;
     }
-    //  eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newTask]);
+  };
 
-  if (!data) {
-    return <h1>Loading</h1>;
-  }
+  // TODO: Loading????
+  // if (!data) {
+  //   return <h1>Loading</h1>;
+  // }
 
   return (
-    <DataContext value={data}>
-      {/* <button onClick={addTask}>add task to db</button> */}
+    <TaskProvider>
       <div className={styles.gridLayout}>
         <nav className={styles.sidebarContainer}>
           <Sidebar
-            currentView={view}
-            changeView={setView}
-            showModal={() => setStatusModal(true)}
+            currentView={currentView}
+            setCurrentView={setCurrentView}
+            openModal={() => setModalState({ isOpen: true, changeId: null })}
           />
         </nav>
-        <main className={styles.mainContainer}>
-          {view == "today" && <Tasks.Today data={data} />}
-
-          {view === "future" && <Tasks.Future data={data} />}
-          {view === "completed" && <Tasks.Completed data={data} />}
-          {view === "someday" && <Tasks.Someday data={data} />}
-        </main>
-        {statusModal && (
+        <main className={styles.mainContainer}>{currentViewComponent()}</main>
+        {modalState.isOpen && (
           <TaskModal
-            status={statusModal}
-            toggleStatus={() => setStatusModal((prevStatus) => !prevStatus)}
-            setNewTask={setNewTask}
+            isOpen={modalState.isOpen}
+            changeId={modalState.changeId}
+            closeModal={() => setModalState({ isOpen: false, changeId: null })}
           />
         )}
       </div>
-    </DataContext>
+      {isConfirmOpen && (
+        <ConfirmDialog
+          isOpen={isConfirmOpen}
+          onAccept={confirmDelete}
+          onCancel={cancelDelete}
+        />
+      )}
+    </TaskProvider>
   );
 }
