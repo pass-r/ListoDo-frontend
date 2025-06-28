@@ -1,4 +1,4 @@
-import { useState, useEffect, useOptimistic } from "react";
+import { useState, useEffect, useOptimistic, startTransition } from "react";
 import { TasksContext } from "./TasksContext";
 import {
   apiGetTasks,
@@ -8,36 +8,10 @@ import {
 } from "../../api/apiFunctions";
 import { convertDates } from "../../utils/convertDates.js";
 
-//
-// TODO: add updateOptimistic
-// TODO: handle errors
-//
 export default function TaskProvider({ children }) {
-  const [tasks, setTasks] = useState([]);
-  // optimisticTasks is equal to tasks unless an action is pending
-  // in which case it is equal to the value returned by updateFn
-  // const [optimisticTasks, addOptimisticTasks] = useState(
-  //   tasks,
-  //   // updateFn: fn that takes the current state and the
-  //   // optimistic value passed to addOptimistic and returns
-  //   // the resulting optimistic state. The return value will
-  //   // be the merged value of the currentState and optimisticValue
-  //   (currentState, optimisticValue) => {
-  //     // merge and return new state with optimistic value
-  //   },
-  // );
+  const [serverTasks, setServerTasks] = useState([]);
+  const [optimisticTasks, setOptimisticTasks] = useOptimistic(serverTasks);
 
-  /*
-
-  const [ allValues, setOptimisticValue ] = useOptimistic(
-    state,
-    (currentState, optimisticValue) => {
-      return [... currentState, optimisticValue]
-    }
-  ) ;
-  */
-
-  // TODO -> maybe use this useEffect to always get tasks??????
   useEffect(() => {
     getTasks();
   }, []);
@@ -46,50 +20,74 @@ export default function TaskProvider({ children }) {
     const apiResponse = await apiGetTasks();
     if (apiResponse.status) {
       const tasks = convertDates(apiResponse.message);
-      setTasks(tasks);
+      setServerTasks(tasks);
+    } else {
+      console.log("Error getting Tasks");
     }
-    // TODO --> Add 'else'
   };
 
   const addTask = async (data) => {
-    addOptimisticTasks();
-    console.log("-- TaskProvider - addTask() - data: ", data);
+    // in order to be displayed a task needs a name and an id
+    // -- optimistic update --
+    const newOptimisticTask = { ...data, id: `optimistic-${Date.now()}` };
+    startTransition(() => setOptimisticTasks((prev) => [...prev, newOptimisticTask]));
+
+    // -- send update to server (if error: revert to previous tasks) --
     const apiResponse = await apiAddTask(data);
-    if (apiResponse.status) {
-      // TODO
+    if (apiResponse.success) {
       getTasks();
+    } else {
+      startTransition(() => setOptimisticTasks(serverTasks));
     }
-    // TODO --> Add 'else'
   };
 
-  // data is an object, with one or more keys { done: true}
   const changeTask = async (id, data) => {
-    console.log("-- TaskProvider - changeTask() - data: ", data);
+    // data is an object, with one or more keys { done: true}
+    // -- optimistic update --
+    startTransition(() =>
+      setOptimisticTasks((prev) =>
+        prev.map((oneTask) => (oneTask.id === id ? { ...oneTask, ...data } : oneTask)),
+      ),
+    );
+
+    // -- send update to server (if error: revert to previous tasks) --
     const apiResponse = await apiChangeTask(id, data);
-    if (apiResponse.status) {
-      // TODO
+    if (apiResponse.success) {
       getTasks();
+    } else {
+      startTransition(() => setOptimisticTasks(serverTasks));
     }
-    // TODO --> Add 'else'
   };
 
   const deleteTask = async (id) => {
+    // -- optimistic update --
+    const updatedTasks = optimisticTasks.filter((oneTask) => oneTask.id !== id);
+    startTransition(() => setOptimisticTasks((prev) => updatedTasks));
+
+    // -- send update to server (if error: revert to previous tasks) --
     const apiResponse = await apiDeleteTask(id);
-    if (apiResponse.status) {
-      // TODO
+    if (apiResponse.success) {
       getTasks();
+    } else {
+      startTransition(() => setOptimisticTasks(serverTasks));
     }
-    // TODO --> Add 'else'
   };
 
   const getProjects = () => {
-    const projectsArray = tasks.map((oneTask) => oneTask.project).filter(Boolean);
+    const projectsArray = serverTasks.map((oneTask) => oneTask.project).filter(Boolean);
     return [...new Set(projectsArray)];
   };
 
   return (
     <TasksContext
-      value={{ tasks, getTasks, addTask, changeTask, deleteTask, getProjects }}
+      value={{
+        tasks: serverTasks,
+        getTasks,
+        addTask,
+        changeTask,
+        deleteTask,
+        getProjects,
+      }}
     >
       {children}
     </TasksContext>
