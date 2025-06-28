@@ -1,0 +1,15 @@
+.dialog {
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+
+    width: 30%;
+    min-width: 300px;
+    max-width: 400px;
+    padding: 2em 1.5em;
+}

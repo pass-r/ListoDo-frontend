@@ -1,0 +1,85 @@
+.taskContainer {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-auto-rows: min-content;
+    grid-template-areas:
+        "checkbox name project buttons"
+        ". description project buttons"
+        ". dueDate project buttons"
+        ". divider divider divider";
+
+    margin-bottom: 0.5em;
+}
+
+.buttonCheckbox,
+.buttonEdit,
+.buttonDelete {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+
+    cursor: pointer;
+}
+
+.buttonCheckbox {
+    grid-area: checkbox;
+    padding-right: 0.5rem;
+    position: relative;
+    top: 2px;
+}
+
+.image {
+    width: 18px;
+}
+
+.buttonCheckbox > .image:hover {
+    content: url("../assets/check-circle.svg");
+}
+
+.name {
+    grid-area: name;
+    font-size: 0.9rem;
+}
+
+.description {
+    grid-area: description;
+
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+.dueDate {
+    grid-area: dueDate;
+
+    font-size: 0.75rem;
+    color: var(--accent);
+
+    margin-top: 0.2em;
+}
+
+.project {
+    grid-area: project;
+    align-self: end;
+
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+.divider {
+    grid-area: divider;
+
+    border: none;
+    border-bottom: 1px solid var(--lines);
+    margin-top: 0.5em;
+}
+
+.buttonBox {
+    grid-area: buttons;
+    display: flex;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.taskContainer:hover .buttonBox {
+    opacity: 1;
+}
