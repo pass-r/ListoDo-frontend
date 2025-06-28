@@ -64,12 +64,10 @@ export default function TaskModal({ isOpen, changeId, closeModal }) {
     if (changeId) {
       // edit task: only call changeTask() if there is changed data
       if (Object.keys(taskItems).length > 0) {
-        console.log("changeTask -> taskItems: ", taskItems);
         changeTask(changeId, taskItems);
       }
     } else {
       // new task: a new task will be created.
-      console.log("addTask -> taskItems: ", taskItems);
       addTask(taskItems);
     }
 
