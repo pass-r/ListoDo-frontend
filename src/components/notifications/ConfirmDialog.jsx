@@ -16,10 +16,14 @@ export default function ConfirmDialog({ isOpen, onAccept, onCancel }) {
 
   return (
     <dialog className={styles.dialog} ref={refDialog}>
-      <p>Do you want to delete the task</p>
-      <div>
-        <button onClick={onCancel}>No</button>
-        <button onClick={onAccept}>Yes</button>
+      <p className={styles.text}>Do you want to delete the task?</p>
+      <div className={styles.buttonBox}>
+        <button onClick={onCancel} className={styles.buttonCancel}>
+          No
+        </button>
+        <button onClick={onAccept} className={styles.buttonAccept}>
+          Yes
+        </button>
       </div>
     </dialog>
   );
