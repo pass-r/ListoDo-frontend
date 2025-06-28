@@ -44,13 +44,12 @@ export default function Today({ openEditModal, openConfirm }) {
           <h2 className={styles.subtitle}>{getDateTodayAsString()} - Today</h2>
           {today.map((oneTask) => {
             return (
-              // no dueDate is passed
+              // 'dueDate' is not passed to TaskItem
               <TaskItem
                 key={oneTask.id}
                 id={oneTask.id}
                 name={oneTask.name}
                 done={oneTask.done}
-                // dueDate={oneTask.dueDate}
                 description={oneTask.description}
                 project={oneTask.project}
                 openEditModal={openEditModal}
