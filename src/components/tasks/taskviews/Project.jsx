@@ -18,6 +18,7 @@ export default function Project({ openEditModal, openConfirm, projectName }) {
       <h1 className={styles.title}>Project: {projectName}</h1>
       {allProjectTasks.map((oneTask) => {
         return (
+          // 'project' is not passed to TaskItem
           <TaskItem
             key={oneTask.id}
             id={oneTask.id}
@@ -25,7 +26,6 @@ export default function Project({ openEditModal, openConfirm, projectName }) {
             done={oneTask.done}
             dueDate={oneTask.dueDate}
             description={oneTask.description}
-            // project={oneTask.project}
             openEditModal={openEditModal}
             openConfirm={openConfirm}
           />
