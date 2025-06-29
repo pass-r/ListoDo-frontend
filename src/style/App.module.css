@@ -1,20 +1,123 @@
 .gridLayout {
     display: grid;
-    grid-template-columns: minmax(200px, 0.8fr) 4fr;
+    grid-template-rows: min-content 1fr;
+    grid-template-areas:
+        "logo"
+        "main";
     min-height: 100vh;
 }
 
-.sidebarContainer {
-    background: var(--bg-sidebar);
-    border-right: 1px solid var(--lines);
+@media (min-width: 600px) {
+    .gridLayout {
+        grid-template-columns: minmax(200px, 0.8fr) 4fr;
+        grid-template-rows: min-content 1fr;
+        grid-template-areas:
+            "logo main"
+            "sidebar main";
+    }
+}
 
+.logoContainer {
+    grid-area: logo;
     width: 90%;
-    margin: 1em auto;
+
+    display: flex;
+    justify-content: space-between;
+
+    margin: 1em auto 0;
+    padding: 0 0 0.5em 0.7em;
+}
+
+.logoContainer p {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+@media (min-width: 600px) {
+    .logoContainer {
+        border-right: 1px solid var(--lines);
+        padding-bottom: 1.5em;
+    }
+}
+
+.logoSquare {
+    position: relative;
+    top: -7px;
+    width: 72px;
+    height: 5px;
+    background-color: var(--accent-light);
+}
+
+.buttonShowSidebar > img {
+    width: 25px;
+}
+
+@media (min-width: 600px) {
+    .buttonShowSidebar {
+        display: none;
+    }
+}
+
+.sidebarContainer {
+    position: fixed;
+    top: 0;
+    left: -220px;
+    width: 220px;
+    height: 100%;
+    background: var(--bg-sidebar);
+    transition: left 0.5s ease;
+    z-index: 1;
+    padding: 1.5em 0 0 0.5em;
+}
+
+@media (min-width: 600px) {
+    .sidebarContainer {
+        grid-area: sidebar;
+
+        position: relative;
+        left: 0;
+        transition: none;
+
+        border-right: 1px solid var(--lines);
+
+        width: 90%;
+        margin: 0 auto 1em;
+        padding-top: 0;
+    }
+}
+
+.sidebarOpen {
+    left: 0;
+    box-shadow:
+        rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px,
+        rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px,
+        rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+@media (min-width: 600px) {
+    .sidebarOpen {
+        box-shadow: none;
+    }
 }
 
 .mainContainer {
+    grid-area: main;
     background-color: var(--bg-main);
 
-    width: 65%;
+    width: 85%;
     margin: 1em auto;
+}
+
+@media (min-width: 600px) {
+    .mainContainer {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .mainContainer {
+        width: 65%;
+    }
 }
