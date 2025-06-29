@@ -1,6 +1,12 @@
-# Task app - Frontend built with React
+# ListoDo
+## Todo app - Frontend built with React
 
 This is the frontend for a Todo App built using React, which interacts with an API I developed in a separate project (see repository 'tasks-server').
+
+## Name
+
+
+**ListoDo** is a combination of the spanish word "Listo", which means "ready" and the english word "Do", as in taking action. Together, they reflect the app's goal: helping you to be ready to do what matters.
 
 
 ## Features
