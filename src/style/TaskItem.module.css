@@ -36,6 +36,10 @@
     content: url("../assets/check-circle.svg");
 }
 
+.buttonEdit {
+    padding-right: 0.2em;
+}
+
 .name {
     grid-area: name;
     font-size: 0.9rem;
@@ -63,6 +67,7 @@
 
     font-size: 0.75rem;
     color: var(--text-light);
+    padding-right: 0.7em;
 }
 
 .divider {
@@ -77,7 +82,7 @@
     grid-area: buttons;
     display: flex;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity 1s ease;
 }
 
 .taskContainer:hover .buttonBox {
