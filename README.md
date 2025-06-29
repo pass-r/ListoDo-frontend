@@ -34,7 +34,7 @@ The backend API that powers this app is located in the task-server repository.
 ## Screenshots
 
 ### Desktop
-![Desktop UI](/images/GUI_desktop.png?raw=true)
+![Desktop user interface](/images/GUI_desktop.png?raw=true)
 
 <br>
 <br>
