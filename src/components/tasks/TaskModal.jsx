@@ -107,6 +107,7 @@ export default function TaskModal({ isOpen, changeId, closeModal }) {
           name="description"
           placeholder={"Describe the task"}
           defaultValue={description}
+          maxLength={60}
           className={styles.inputText}
         />
 
