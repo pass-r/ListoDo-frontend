@@ -29,3 +29,17 @@ This is the frontend for a Todo App built using React, which interacts with an A
 
 
 The backend API that powers this app is located in the task-server repository.
+
+
+## Screenshots
+
+**Desktop**
+![Desktop UI](/images/GUI_desktop.png?raw=true)
+
+<br>
+<br>
+
+**Mobile**
+![Mobile user interface 1](/images/GUI_desktop.png?raw=true)
+<br>
+![Mobile user interface 1](/images/GUI_desktop.png?raw=true)
