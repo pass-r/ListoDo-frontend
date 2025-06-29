@@ -23,7 +23,6 @@
         color: var(--text);
     }
 
-    &:focus,
     &:hover,
     &:active {
         color: var(--accent);
