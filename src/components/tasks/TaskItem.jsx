@@ -41,7 +41,7 @@ export default function TaskItem({
       <p className={styles.name}>{name}</p>
       {description && <p className={styles.description}>{description}</p>}
       {date && <p className={styles.dueDate}>{date}</p>}
-      {project && <p className={styles.project}>{project}</p>}
+      {project && <p className={styles.project}># {project}</p>}
       <div className={styles.buttonBox}>
         <button className={styles.buttonEdit} onClick={() => openEditModal(id)}>
           <img className={styles.image} src={imgEdit} alt="" />
