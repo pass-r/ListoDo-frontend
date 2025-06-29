@@ -33,13 +33,11 @@ The backend API that powers this app is located in the task-server repository.
 
 ## Screenshots
 
-**Desktop**
+### Desktop
 ![Desktop UI](/images/GUI_desktop.png?raw=true)
 
 <br>
 <br>
 
-**Mobile**
-![Mobile user interface 1](/images/GUI_desktop.png?raw=true)
-<br>
-![Mobile user interface 1](/images/GUI_desktop.png?raw=true)
+## Mobile
+![Mobile user interface](/images/GUI_mobile.png?raw=true)
