@@ -8,7 +8,7 @@ import { apiRequest } from "./helpers/apiRequest";
  *  and the server response or error.
  */
 export async function apiGetTasks() {
-  const url = "http://localhost:3000/api/tasks";
+  const url = "http://localhost:4000/api/tasks";
 
   return apiRequest(url);
 }
