@@ -1,7 +1,7 @@
-# DuNau
+# DuNau (Frontend)
 ## Todo app - Frontend built with React
 
-This is the frontend for a Todo App built using React, which interacts with an API I developed in a separate project (see repository 'dunau-backend').
+This is the frontend for a Todo App built using React, which interacts with an API I developed in a separate project (see repository [dunau-backend](https://github.com/pass-r/dunau-backend)).
 
 ## Name
 
