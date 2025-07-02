@@ -1,12 +1,12 @@
-# ListoDo
+# DuNau
 ## Todo app - Frontend built with React
 
-This is the frontend for a Todo App built using React, which interacts with an API I developed in a separate project (see repository 'tasks-server').
+This is the frontend for a Todo App built using React, which interacts with an API I developed in a separate project (see repository 'dunau-backend').
 
 ## Name
 
 
-**ListoDo** is a combination of the spanish word "Listo", which means "ready" and the english word "Do", as in taking action. Together, they reflect the app's goal: helping you to be ready to do what matters.
+**DuNau** is a play on the phrase **"Do Now"**.
 
 
 ## Features
@@ -28,16 +28,4 @@ This is the frontend for a Todo App built using React, which interacts with an A
 ## Backend
 
 
-The backend API that powers this app is located in the task-server repository.
-
-
-## Screenshots
-
-### Desktop
-![Desktop user interface](/images/GUI_desktop.png?raw=true)
-
-<br>
-<br>
-
-## Mobile
-![Mobile user interface](/images/GUI_mobile.png?raw=true)
+The backend API that powers this app is located in the 'dunau-backend' repository.
