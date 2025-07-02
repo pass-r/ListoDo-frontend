@@ -46,13 +46,12 @@ export default function App() {
       return projectView;
     }
   };
-  console.log("isSidebarOpen: ", isSidebarOpen);
   return (
     <TaskProvider>
       <div className={styles.gridLayout}>
         <div className={styles.logoContainer}>
           <div>
-            <p>ListoDo</p>
+            <p>DuNau</p>
             <div className={styles.logoSquare}></div>
           </div>
           <button className={styles.buttonShowSidebar} onClick={toggleSidebar}>
