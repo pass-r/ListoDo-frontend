@@ -29,7 +29,7 @@
 }
 
 .logoContainer p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 700;
 }
 
@@ -42,8 +42,8 @@
 
 .logoSquare {
     position: relative;
-    top: -7px;
-    width: 72px;
+    top: -8px;
+    width: 67px;
     height: 5px;
     background-color: var(--accent-light);
 }
