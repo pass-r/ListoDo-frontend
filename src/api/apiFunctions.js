@@ -1,5 +1,7 @@
 import { apiRequest } from "./helpers/apiRequest";
 
+const API_BASE_URL = "https://dunau.ch/api";
+
 /**
  * Gets all the tasks by making a GET request to the 'tasks API'.
  *
@@ -8,7 +10,7 @@ import { apiRequest } from "./helpers/apiRequest";
  *  and the server response or error.
  */
 export async function apiGetTasks() {
-  const url = "http://localhost:4000/api/tasks";
+  const url = `${API_BASE_URL}/tasks`;
 
   return apiRequest(url);
 }
@@ -22,7 +24,7 @@ export async function apiGetTasks() {
  *  and the server response or error.
  */
 export async function apiAddTask(newTask) {
-  const url = "http://localhost:3000/api/tasks";
+  const url = `${API_BASE_URL}/tasks`;
   const options = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -43,7 +45,7 @@ export async function apiAddTask(newTask) {
  *  and the server response or error.
  */
 export async function apiChangeTask(id, itemsToBeUpdated) {
-  const url = `http://localhost:3000/api/tasks/${id}`;
+  const url = `${API_BASE_URL}/tasks/${id}`;
   const options = {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
@@ -62,7 +64,7 @@ export async function apiChangeTask(id, itemsToBeUpdated) {
  *  and the server response or error.
  */
 export async function apiDeleteTask(id) {
-  const url = `http://localhost:3000/api/tasks/${id}`;
+  const url = `${API_BASE_URL}/tasks/${id}`;
   const options = {
     method: "DELETE",
   };
