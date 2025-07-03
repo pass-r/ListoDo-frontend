@@ -72,7 +72,7 @@ export default function Sidebar({
             closeSidebar();
           }}
         >
-          {projectName}
+          # {projectName}
         </button>
       ))}
     </>
