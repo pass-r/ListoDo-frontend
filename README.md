@@ -5,12 +5,10 @@ This is the frontend for a Todo App built using React, which interacts with an A
 
 ## Name
 
-
 **DuNau** is a play on the phrase **"Do Now"**.
 
 
 ## Features
-
 
 - View, create, edit and delete Tasks.
 - Optimistic UI updated using React hooks.
@@ -19,7 +17,6 @@ This is the frontend for a Todo App built using React, which interacts with an A
 
 ## Tools & Technologies:
 
-
 - React
 - JavaScript
 - API Integration: Communicates with a backend API to manage the tasks
@@ -27,5 +24,18 @@ This is the frontend for a Todo App built using React, which interacts with an A
 
 ## Backend
 
+- Backend repository: [dunau-backend](https://github.com/pass-r/dunau-backend)
 
-The backend API that powers this app is located in the 'dunau-backend' repository.
+- **Note:** Currently, tasks are stored **in memory** for each user, so they will be lost when the server restarts.
+
+
+## Screenshots
+
+### Desktop
+![Desktop user interface](/images/GUI_desktop.png?raw=true)
+
+<br>
+<br>
+
+## Mobile
+![Mobile user interface](/images/GUI_mobile.png?raw=true)
