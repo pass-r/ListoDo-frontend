@@ -35,7 +35,6 @@ This is the frontend for a Todo App built using React, which interacts with an A
 ![Desktop user interface](/images/GUI_desktop.png?raw=true)
 
 <br>
-<br>
 
 ## Mobile
 ![Mobile user interface](/images/GUI_mobile.png?raw=true)
