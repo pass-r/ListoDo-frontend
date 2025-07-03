@@ -1,4 +1,5 @@
 import { apiRequest } from "./helpers/apiRequest";
+import { getUserId } from "../user/userId";
 
 const API_BASE_URL = "https://dunau.ch/api";
 
@@ -11,8 +12,12 @@ const API_BASE_URL = "https://dunau.ch/api";
  */
 export async function apiGetTasks() {
   const url = `${API_BASE_URL}/tasks`;
+  const options = {
+    method: "GET",
+    headers: { "x-user-id": getUserId() },
+  };
 
-  return apiRequest(url);
+  return apiRequest(url, options);
 }
 
 /**
@@ -27,7 +32,7 @@ export async function apiAddTask(newTask) {
   const url = `${API_BASE_URL}/tasks`;
   const options = {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "x-user-id": getUserId() },
     body: JSON.stringify(newTask),
   };
 
@@ -48,7 +53,7 @@ export async function apiChangeTask(id, itemsToBeUpdated) {
   const url = `${API_BASE_URL}/tasks/${id}`;
   const options = {
     method: "PATCH",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "x-user-id": getUserId() },
     body: JSON.stringify(itemsToBeUpdated),
   };
 
@@ -67,6 +72,7 @@ export async function apiDeleteTask(id) {
   const url = `${API_BASE_URL}/tasks/${id}`;
   const options = {
     method: "DELETE",
+    headers: { "x-user-id": getUserId() },
   };
 
   return apiRequest(url, options);
